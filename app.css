@@ -55,6 +55,7 @@ body.sky-theme {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -62,6 +63,9 @@ body {
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
+    /* Prevent accidental left-right page panning; keep vertical scroll */
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -71,7 +75,13 @@ body.performance-lite *, body.performance-lite *::before, body.performance-lite 
         animation-iteration-count: 1 !important;
         transition-duration: 0ms !important;
 }
-body.performance-lite .skills-floater { display: none !important; }
+/* Allow skills background floaters even in performance-lite (reduced intensity) */
+body.performance-lite .skills-floater {
+    display: block !important;
+    animation-duration: var(--dur, 18s) !important;
+    animation-iteration-count: infinite !important;
+    opacity: .20 !important;
+}
 body.performance-lite .hero-orbit-logos .ring { animation: none !important; }
 body.performance-lite .hero-orbit-logos .icon i { animation: none !important; }
 body.performance-lite .project-card:hover { transform: none !important; }
@@ -1130,7 +1140,9 @@ a {
 .certificates-slider {
     display: flex;
     gap: 18px;
-    overflow: hidden
+    overflow: hidden;
+    touch-action: pan-x;
+    cursor: grab;
 }
 
 /* Certificate flip card with glass frame */
@@ -1208,6 +1220,8 @@ a {
 .certificate-card:hover .certificate-image img {
     transform: scale(1.06)
 }
+
+.certificates-slider.is-dragging { cursor: grabbing; }
 
 /* Certificate overlay (like project overlay) */
 /* We now use a real overlay element; disable the legacy ::after overlay */
@@ -1434,13 +1448,14 @@ a {
     /* Hide arrows on small screens; use swipe/drag */
     .slider-btn { display: none; }
     .certificates-slider {
-        overflow-x: auto;
-        overflow-y: visible;
+    overflow-x: auto;
+    overflow-y: visible;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
-        padding-bottom: 6px;
-        margin: 0 -14px;
-        padding-inline: 14px;
+    padding-bottom: 6px;
+    /* Avoid negative margins that can introduce horizontal page scroll */
+    margin: 0;
+    padding-inline: 12px;
     }
     .certificate-card {
         flex: 0 0 86%;
@@ -1998,9 +2013,9 @@ a {
 .timeline-bg::after {
     content: "";
     position: absolute;
-    width: 60vw;
-    height: 60vw;
-    left: -20vw;
+    width: min(60vw, 800px);
+    height: min(60vw, 800px);
+    left: max(-12vw, -120px);
     top: -10vw;
     background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--primary) 35%, transparent), transparent 60%);
     filter: blur(60px);
@@ -2010,10 +2025,10 @@ a {
 
 .timeline-bg::after {
     left: auto;
-    right: -25vw;
+    right: max(-12vw, -120px);
     top: 30%;
-    width: 70vw;
-    height: 70vw;
+    width: min(70vw, 900px);
+    height: min(70vw, 900px);
     background: radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--secondary) 35%, transparent), transparent 60%);
     animation-duration: 30s;
 }
@@ -2388,8 +2403,8 @@ a {
     .nav-links {
         position: fixed;
         top: 70px;
-        left: -100%;
-        width: 100%;
+    left: -100%;
+    width: 100vw; /* exact viewport width; avoids overflow from padding */
         height: calc(100vh - 70px);
         padding: 20px;
         flex-direction: column;

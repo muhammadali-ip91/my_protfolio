@@ -254,16 +254,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!floaterHost) return;
     floaterHost.innerHTML = '';
     const base = iconSets[key] || iconSets.technical;
-    // Reduce count significantly on performance-lite
-    const count = lowPower ? (window.innerWidth < 600 ? 6 : 8) : (window.innerWidth < 600 ? 10 : window.innerWidth < 992 ? 14 : 18);
+    // Keep a lighter animation on performance-lite instead of disabling
+    const count = lowPower ? (window.innerWidth < 600 ? 5 : 7) : (window.innerWidth < 600 ? 10 : window.innerWidth < 992 ? 14 : 18);
     for (let i = 0; i < count; i++) {
       const iClass = base[i % base.length];
       const el = document.createElement('div');
       el.className = 'skills-floater';
       el.style.setProperty('--x', `${Math.round(randomBetween(4, 96))}vw`);
       el.style.setProperty('--sx', `${Math.round(randomBetween(-20, 20))}px`);
+      // Slightly slower on lowPower, but keep running
       el.style.setProperty('--dur', `${(lowPower ? randomBetween(18, 28) : randomBetween(12, 22)).toFixed(1)}s`);
-      if (lowPower) { el.style.animationPlayState = 'paused'; }
+      if (lowPower) el.style.opacity = '.20';
       el.style.animationDelay = `-${randomBetween(0, 12).toFixed(1)}s`;
       el.innerHTML = `<i class="${iClass}"></i>`;
       floaterHost.appendChild(el);
