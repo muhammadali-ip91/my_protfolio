@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ali Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body class="earth-theme">
+    <!-- Background Layers (from space theme) -->
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    <!-- <div class="planet"></div> -->
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo"><span class="logo-text">Muhammad Ali</span><span class="logo-dot"></span></a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certificates" class="nav-link">Certificates</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="actions">
+                <div class="theme-selector">
+                    <button class="theme-btn earth" data-theme="earth" title="Earth"></button>
+                    <button class="theme-btn moon" data-theme="moon" title="Moon"></button>
+                    <button class="theme-btn sun" data-theme="sun" title="Sun"></button>
+                    <button class="theme-btn sky" data-theme="sky" title="Sky"></button>
+                </div>
+                <div class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section id="home" class="section hero full-height">
+            <div class="container hero-wrap">
+                <div class="hero-content">
+                    <h1 class="hero-title animate-in">Hi, I'm <span class="accent">Muhammad Ali</span></h1>
+                    <h2 class="hero-subtitle animate-in">A <span class="typing"></span></h2>
+                    <p class="hero-description animate-in">I'm a 5th semester Software Engineering student at Pak-Austria University, passionate about modern web experiences and Python development. I love exploring new technologies and turning ideas into reality through code.</p>
+                    <div class="hero-buttons animate-in">
+                        <a href="#projects" class="btn btn-primary">View Work</a>
+                        <a href="#contact" class="btn btn-secondary">Contact</a>
+                        <a href="#download" class="btn btn-secondary"><i class="fa-solid fa-file-arrow-down"></i> CV</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="orbital">
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                        <div class="core"></div>
+                    </div>
+                    <!-- Rotating logos around the core -->
+                    <div class="hero-orbit-logos" aria-hidden="true"></div>
+                    <div class="astronaut-silhouette" aria-hidden="true"></div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down" aria-label="Scroll Down">
+                <span>Scroll</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="container about-grid">
+                <div class="about-visual">
+                    <div class="profile-ring">
+                        <img src="files/profile.jpg" alt="Profile" class="profile-img" />
+                        <span class="ring ring-1"></span>
+                        <span class="ring ring-2"></span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">About <span class="accent">Me</span></h2>
+                    <p>I'm a Full-Stack Developer and BSSE student skilled in web, desktop, and machine learning application development. I have built projects ranging from PHP/MySQL systems with Node.js APIs to Python desktop applications integrated with Leaflet.js mapping. My tech stack includes HTML5, CSS3, JavaScript, PHP, Python, SQL, and Express.js, along with practical experience in Machine Learning using Scikit-Learn, TensorFlow, and Keras. I enjoy solving complex problems and creating innovative solutions across different platforms. Currently seeking opportunities to apply my skills and grow as a developer.</p>
+                    <!-- <div class="about-info">
+                        <div class="info-item"><span class="label">Name:</span><span class="value">Your Name</span></div>
+                        <div class="info-item"><span class="label">Email:</span><span class="value">you@example.com</span></div>
+                        <div class="info-item"><span class="label">Location:</span><span class="value">Your City, Country</span></div>
+                        <div class="info-item"><span class="label">Experience:</span><span class="value">3+ Years</span></div>
+                    </div> -->
+                    <div class="social-links">
+                        <a href="https://github.com/muhammadali-ip91" aria-label="GitHub" class="social"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-ali-051923358/" aria-label="LinkedIn" class="social"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter" class="social"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/_its_sukuna___/" aria-label="Instagram" class="social"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <div class="container">
+                <!-- Animated floating icons background for skills (populated via JS) -->
+                <div class="skills-floaters" aria-hidden="true"></div>
+                <h2 class="section-title">My <span class="accent">Skills</span></h2>
+
+                <div class="skills-tabs" role="tablist" aria-label="Skills Categories">
+                    <button class="skills-tab active" role="tab" aria-selected="true" data-target="tab-technical">Technical Skills</button>
+                    <button class="skills-tab" role="tab" aria-selected="false" data-target="tab-soft">Soft Skills</button>
+                    <button class="skills-tab" role="tab" aria-selected="false" data-target="tab-tools">Tools</button>
+                </div>
+
+                <!-- Technical Skills Panel -->
+                <div id="tab-technical" class="skills-panel active" role="tabpanel">
+                    <div class="skills-row">
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-html5"></i><h3>HTML</h3><span>95%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="95"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-css3-alt"></i><h3>CSS</h3><span>90%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="90"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-js"></i><h3>JavaScript</h3><span>85%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="85"></span></div>
+                        </div>
+                        <!-- <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-react"></i><h3>React</h3><span>67%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="67"></span></div>
+                        </div> -->
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-code"></i><h3>C++</h3><span>95%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="95"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-python"></i><h3>Python</h3><span>95%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="95"></span></div>
+                        </div>
+                        <!-- Added Backend/DB skills -->
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-node-js"></i><h3>Node.js</h3><span>80%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="80"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-php"></i><h3>PHP</h3><span>75%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="75"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-database"></i><h3>MySQL</h3><span>80%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="80"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-table"></i><h3>SQL</h3><span>85%</span></div>
+                            <div class="skill-bar"><span class="skill-progress" data-width="85"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills Panel -->
+                <div id="tab-soft" class="skills-panel" role="tabpanel" hidden>
+                    <div class="skills-row">
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-comments"></i><h3>Communication</h3><span>90%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-users"></i><h3>Teamwork</h3><span>88%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-lightbulb"></i><h3>Problem Solving</h3><span>92%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-clock"></i><h3>Time Management</h3><span>85%</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Panel -->
+                <div id="tab-tools" class="skills-panel" role="tabpanel" hidden>
+                    <div class="skills-row">
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-git-alt"></i><h3>Git</h3><span>88%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-code"></i><h3>VS Code</h3><span>90%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-bezier-curve"></i><h3>Figma</h3><span>80%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-palette"></i><h3>Canva</h3><span>85%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-discord"></i><h3>Discord</h3><span>80%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fab fa-linux"></i><h3>Kali Linux</h3><span>65%</span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-head"><i class="fas fa-fire"></i><h3>Firebase</h3><span>75%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <!-- Background for orbs/gradient waves -->
+                <div class="timeline-bg" aria-hidden="true"></div>
+
+                <!-- Scroll-snap wrapper with SVG neon path overlay -->
+                <div class="timeline-wrap">
+                    <svg class="timeline-svg" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true"></svg>
+                    <div class="timeline">
+                    <!-- CodeAlpha -->
+                    <div class="timeline-item left animate-in">
+                        <span class="timeline-dot"></span>
+                        <div class="content exp-card">
+                            <span class="exp-duration">1 Month</span>
+                            <h3 class="exp-role">Full Stack Developer Intern</h3>
+                            <p class="exp-company">CodeAlpha</p>
+                            <p class="exp-desc">Built responsive UI components, polished layouts, and introduced micro-animations to improve UX. Successfully completed a full stack project, applying concepts of both frontend and backend development in an integrated application.</p>
+                        </div>
+                    </div>
+                    <!-- Arch Tech (Machine Learning) -->
+                    <div class="timeline-item right animate-in">
+                        <span class="timeline-dot"></span>
+                        <div class="content exp-card">
+                            <span class="exp-duration">2 Months</span>
+                            <h3 class="exp-role">Machine Learning Intern</h3>
+                            <p class="exp-company">Arch Tech</p>
+                            <p class="exp-desc">Worked on hands-on ML projects including Brain Tumor Segmentation using YOLO11 & SAM2 and MNIST Digit Recognition. Gained practical experience with Scikit-Learn, TensorFlow, and Keras while applying core ML concepts from Hands-On Machine Learning</p>
+                        </div>
+                    </div>
+                    <!-- NRTC Python -->
+                    <div class="timeline-item left animate-in">
+                        <span class="timeline-dot"></span>
+                        <div class="content exp-card">
+                            <span class="exp-duration">6 Weeks</span>
+                            <h3 class="exp-role">Python Developer Intern</h3>
+                            <p class="exp-company">NRTC</p>
+                            <p class="exp-desc">Developed full-stack applications in the Electronic Warfare Department, including an Interactive Geospatial Mapping System using Python/Leaflet.js and a Login Management System with PHP/MySQL/Node.js. Gained hands-on experience with CustomTkinter, CEFPython3, REST APIs, and GIS technologies while progressing from Python basics to building production-ready desktop and web applications.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="app">App</button>
+                    <button class="filter-btn" data-filter="design">Design</button>
+                </div>
+                <div class="projects-grid">
+                    <article class="project-card" data-category="app">
+                        <div class="card-tilt">
+                            <div class="project-image">
+                                <img src="files/leaflet.png" alt="GeoMapper Pro Application">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-inner">
+                                    <h3>GeoMapper Pro Application</h3>
+                                    <p> Interactive Geospatial Mapping System.</p>
+                                    <div class="overlay-actions">
+                                        <a href="#" class="btn-mini">View</a>
+                                        <a href="https://github.com/muhammadali-ip91/leafletmap_with_python" class="btn-mini">GitHub</a>
+                                        <a href="https://github.com/muhammadali-ip91/leafletmap_with_python" class="btn-mini">Live</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="app">
+                        <div class="card-tilt">
+                            <div class="project-image">
+                                <img src="files/audio.png" alt="Multilingual Audio Translator">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-inner">
+                                    <h3>Multilingual Audio Translator</h3>
+                                    <p>Multilingual audio translation to Urdu Audio.</p>
+                                    <div class="overlay-actions">
+                                        <a href="#" class="btn-mini">View</a>
+                                        <a href="https://github.com/muhammadali-ip91/Multilingual-Audio-Translator" class="btn-mini">GitHub</a>
+                                        <a href="https://github.com/muhammadali-ip91/Multilingual-Audio-Translator" class="btn-mini">Live</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="web">
+                        <div class="card-tilt">
+                            <div class="project-image">
+                                <img src="files/portfolio.png" alt="Portfolio Website">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-inner">
+                                    <h3>Portfolio Website</h3>
+                                    <p>Showcase of my work and projects.</p>
+                                    <div class="overlay-actions">
+                                        <a href="#" class="btn-mini">View</a>
+                                        <a href="https://github.com/muhammadali-ip91/portfolio_design" class="btn-mini">GitHub</a>
+                                        <a href="#" class="btn-mini">Live</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="app">
+                        <div class="card-tilt">
+                            <div class="project-image">
+                                <img src="files/login.png" alt="Login Application">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-inner">
+                                    <h3>Login Application</h3>
+                                    <p>Content platform for astronomy fans.</p>
+                                    <div class="overlay-actions">
+                                        <a href="#" class="btn-mini">View</a>
+                                        <a href="https://github.com/muhammadali-ip91/login_page_tkinter" class="btn-mini">GitHub</a>
+                                        <a href="https://github.com/muhammadali-ip91/login_page_tkinter" class="btn-mini">Live</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="web">
+                        <div class="card-tilt">
+                            <div class="project-image">
+                                <img src="files/ml.png" alt="Brain">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-inner">
+                                    <h3> Brain Tumor Segmentation</h3>
+                                    <p>A model which identifies brain tumors.</p>
+                                    <div class="overlay-actions">
+                                        <a href="#" class="btn-mini">View</a>
+                                        <a href="https://github.com/muhammadali-ip91/ml-project-brain-segmentation" class="btn-mini">GitHub</a>
+                                        <a href="https://github.com/muhammadali-ip91/ml-project-brain-segmentation" class="btn-mini">Live</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates -->
+        <section id="certificates" class="section">
+            <div class="container">
+                <h2 class="section-title">My <span class="accent">Certificates</span></h2>
+                <div class="certificates-track">
+                    <button class="slider-btn prev-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <div class="certificates-slider">
+                        <div class="certificate-card" data-title="Advanced Web Development" data-issuer="Space Tech University" data-year="2022" data-img="https://via.placeholder.com/1000x600/1a1a2e/ffffff?text=Advanced+Web+Dev">
+                            <div class="flip-scene">
+                                <div class="flip-inner">
+                                    <div class="flip-face front">
+                                        <div class="certificate-image">
+                                            <img src="files/archtech.jpg" alt="Advanced Web Dev">
+                                            <div class="cert-overlay">
+                                                <div class="overlay-inner">
+                                                    <h3>Machine Learning Intern</h3>
+                                                    <p>Arch Technologies</p>
+                                                    <div class="overlay-actions">
+                                                        <a href="#" class="btn-mini cert-view">View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flip-face back">
+                                        <div class="certificate-info">
+                                            <h3>Machine Learning Intern</h3>
+                                            <p>Arch Technologies</p>
+                                            <a href="#" class="btn-mini cert-view">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-card" data-title="3D Web Graphics" data-issuer="Cosmic Coding Academy" data-year="2021" data-img="https://via.placeholder.com/1000x600/16213e/ffffff?text=3D+Web+Graphics">
+                            <div class="flip-scene">
+                                <div class="flip-inner">
+                                    <div class="flip-face front">
+                                        <div class="certificate-image">
+                                            <img src="files/codealpha.jpg" alt="3D Web Graphics">
+                                            <div class="cert-overlay">
+                                                <div class="overlay-inner">
+                                                    <h3>Full Stack Development Intern</h3>
+                                                    <p>Code-Alpha</p>
+                                                    <div class="overlay-actions">
+                                                        <a href="#" class="btn-mini cert-view">View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flip-face back">
+                                        <div class="certificate-info">
+                                            <h3>Full Stack Development Intern</h3>
+                                            <p>Code-Alpha</p>
+                                            <a href="#" class="btn-mini cert-view">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-card" data-title="Frontend Mastery" data-issuer="Galactic Web Institute" data-year="2020" data-img="https://via.placeholder.com/1000x600/0f3460/ffffff?text=Frontend+Mastery">
+                            <div class="flip-scene">
+                                <div class="flip-inner">
+                                    <div class="flip-face front">
+                                        <div class="certificate-image">
+                                            <img src="files/cyber.jpg" alt="Frontend Mastery">
+                                            <div class="cert-overlay">
+                                                <div class="overlay-inner">
+                                                    <h3>Introduction to Cybersecurity Awareness</h3>
+                                                    <p>HP LIFE</p>
+                                                    <div class="overlay-actions">
+                                                        <a href="#" class="btn-mini cert-view">View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flip-face back">
+                                        <div class="certificate-info">
+                                            <h3>Introduction to Cybersecurity Awareness</h3>
+                                            <p>HP LIFE</p>
+                                            <a href="#" class="btn-mini cert-view">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-card" data-title="JavaScript Expert" data-issuer="Orbit Code School" data-year="2019" data-img="https://via.placeholder.com/1000x600/533483/ffffff?text=JS+Expert">
+                            <div class="flip-scene">
+                                <div class="flip-inner">
+                                    <div class="flip-face front">
+                                        <div class="certificate-image">
+                                            <img src="files/agile.jpg" alt="JavaScript Expert">
+                                            <div class="cert-overlay">
+                                                <div class="overlay-inner">
+                                                    <h3>Agile Project Management</h3>
+                                                    <p>HP LIFE</p>
+                                                    <div class="overlay-actions">
+                                                        <a href="#" class="btn-mini cert-view">View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flip-face back">
+                                        <div class="certificate-info">
+                                            <h3>Agile Project Management</h3>
+                                            <p>HP LIFE</p>
+                                            <a href="#" class="btn-mini cert-view">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn next-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <!-- Floating glow background for Contact -->
+            <div class="contact-bg" aria-hidden="true"></div>
+            <div class="container contact-grid">
+                <div class="contact-info animate-in">
+                    <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+                    <p>Have a project in mind or want to collaborate? Let's talk.</p>
+                    <div class="info-items">
+                        <div class="info-item"><i class="fas fa-envelope"></i><div class="info-text"><h4>Email</h4><p><a href="mailto:muhammadali1233344@gmail.com" aria-label="Send Email">muhammadali1233344@gmail.com</a></p></div></div>
+                        <div class="info-item"><i class="fas fa-phone"></i><div class="info-text"><h4>Phone</h4><p><a href="https://wa.me/923089749285" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">+92 308 9749285</a></p></div></div>
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i><div class="info-text"><h4>Location</h4><p>Haripur</p></div></div>
+                    </div>
+                    <!-- Single-line social links (restored) -->
+                    <div class="social-links">
+                        <a href="https://github.com/muhammadali-ip91" class="social" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-ali-051923358/" class="social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/_its_sukuna___/" class="social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form animate-in" novalidate>
+                    <div class="form-group"><input id="contact-name" name="name" type="text" placeholder="Your Name" required></div>
+                    <div class="form-group"><input id="contact-email" name="email" type="email" placeholder="Your Email" required></div>
+                    <div class="form-group"><input id="contact-subject" name="subject" type="text" placeholder="Subject"></div>
+                    <div class="form-group"><textarea id="contact-message" name="message" placeholder="Your Message" rows="6" required></textarea></div>
+                    <button type="submit" class="btn btn-primary ripple-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Muhammad Ali. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://github.com/muhammadali-ip91"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-ali-051923358/"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/_its_sukuna___/"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Certificate Modal -->
+    <div class="cert-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            <img src="" alt="Certificate Preview">
+        </div>
+    </div>
+
+    <!-- Project Image Modal (reuses same styling) -->
+    <div class="project-modal cert-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            <img src="" alt="Project Preview">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <!-- Firebase (ESM) -->
+    <script type="module" src="firebase.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
