@@ -624,9 +624,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Tilt via VanillaTilt on the inner wrapper for smoother effect
   projectCards.forEach(card => {
     const inner = card.querySelector('.card-tilt') || card;
-    if (!lowPower && pointerFine && window.VanillaTilt) {
-      window.VanillaTilt.init(inner, { max: 10, speed: 400, glare: true, 'max-glare': .15, scale: 1.02 });
-    }
+    if (!window.VanillaTilt) return;
+    const isTouch = window.matchMedia && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    const opts = isTouch
+      ? { max: 7, speed: 500, glare: true, 'max-glare': .12, scale: 1.01, gyroscope: true, gyroscopeMinAngleX: -15, gyroscopeMaxAngleX: 15, gyroscopeMinAngleY: -15, gyroscopeMaxAngleY: 15, 'full-page-listening': true, reset: true }
+      : { max: 10, speed: 400, glare: true, 'max-glare': .15, scale: 1.02, reset: true };
+    window.VanillaTilt.init(inner, opts);
   });
 
   // Magnetic hover: small translate toward cursor
