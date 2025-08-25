@@ -1412,6 +1412,40 @@ a {
     transition: opacity .45s ease, transform .45s ease;
 }
 
+/* Mobile-friendly certificates: better sizing, swipe, and touch overlay */
+@media (hover: none) {
+    /* Always show overlay on touch devices where hover isn't available */
+    .cert-overlay { opacity: 1; transform: none; }
+    .certificate-card:hover .certificate-image img { transform: none; }
+}
+
+@media (max-width: 768px) {
+    .certificates-track { grid-template-columns: 1fr; gap: 14px; }
+    /* Hide arrows on small screens; use swipe/drag */
+    .slider-btn { display: none; }
+    .certificates-slider {
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 6px;
+        margin: 0 -14px;
+        padding-inline: 14px;
+    }
+    .certificate-card {
+        flex: 0 0 86%;
+        max-width: 86%;
+        scroll-snap-align: center;
+    }
+    /* Use aspect-ratio instead of fixed heights for cleaner scaling */
+    .flip-scene { height: auto; aspect-ratio: 16/10; }
+    .certificate-image { height: auto; aspect-ratio: 16/10; }
+}
+
+@media (max-width: 480px) {
+    .certificate-card { flex-basis: 90%; max-width: 90%; }
+}
+
 /* Contact */
 .contact-grid {
     display: grid;
