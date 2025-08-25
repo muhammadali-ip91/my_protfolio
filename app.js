@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Typing animation
   const typingElement = document.querySelector('.typing');
   if (typingElement) {
-    const words = ['Web Developer', 'UI/UX Designer', 'Frontend Engineer', 'Creative Coder'];
+    const words = ['Web Developer', 'Python Developer', 'Frontend Engineer', 'Creative Coder'];
     let wi = 0, ci = 0, del = false;
     const tick = () => {
       const w = words[wi];
