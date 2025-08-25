@@ -173,19 +173,44 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', () => setTimeout(refreshHero, 50));
   }
 
-  // Typing animation
+  // Typing animation (responsive speeds + reduced-motion support)
   const typingElement = document.querySelector('.typing');
   if (typingElement) {
     const words = ['Web Developer', 'Python Developer', 'Frontend Engineer', 'Creative Coder'];
-    let wi = 0, ci = 0, del = false;
-    const tick = () => {
-      const w = words[wi];
-      typingElement.textContent = del ? w.slice(0, ci--) : w.slice(0, ci++);
-      if (!del && ci > w.length) { del = true; setTimeout(tick, 1200); return; }
-      if (del && ci < 0) { del = false; wi = (wi + 1) % words.length; ci = 0; }
-      setTimeout(tick, del ? 70 : 120);
-    };
-    setTimeout(tick, 700);
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const small = (window.innerWidth || 0) < 480;
+    let typeSpeed = small ? 110 : 85;
+    let delSpeed = small ? 65 : 50;
+    let holdTime = 1100;
+    if (typeof lowPower !== 'undefined' && lowPower) { typeSpeed += 25; delSpeed += 20; holdTime -= 100; }
+
+    // Fallback: show the first word when reduced motion is requested
+    if (reduced) {
+      typingElement.textContent = words[0];
+    } else {
+      let wi = 0, ci = 0, del = false, tId;
+      const step = () => {
+        const w = words[wi];
+        typingElement.textContent = del ? w.slice(0, ci--) : w.slice(0, ci++);
+        typingElement.classList.toggle('is-deleting', !!del);
+        if (!del && ci > w.length) {
+          // pause at full word
+          tId = setTimeout(() => { del = true; step(); }, holdTime);
+          return;
+        }
+        if (del && ci < 0) {
+          del = false; wi = (wi + 1) % words.length; ci = 0;
+        }
+        tId = setTimeout(step, del ? delSpeed : typeSpeed);
+      };
+      // pause/resume when tab not visible (saves battery)
+      const vis = () => {
+        if (document.hidden) { clearTimeout(tId); }
+        else { clearTimeout(tId); tId = setTimeout(step, 250); }
+      };
+      document.addEventListener('visibilitychange', vis);
+      setTimeout(step, 600);
+    }
   }
 
   // Reveal animations

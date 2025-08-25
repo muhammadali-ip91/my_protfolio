@@ -378,14 +378,24 @@ a {
 .typing {
     color: var(--primary);
     font-weight: 700;
-    position: relative
+        position: relative;
+        will-change: contents
 }
 
 .typing::after {
     content: '|';
     position: absolute;
     right: -8px;
-    animation: blink .7s infinite
+        animation: blink .7s infinite;
+        opacity: .9
+}
+
+/* Subtle color change while deleting */
+.typing.is-deleting { color: color-mix(in oklab, var(--primary) 75%, #fff 25%); }
+
+/* Small screens: prevent layout shift and scale font slightly */
+@media (max-width: 480px) {
+    .hero-subtitle { font-size: 1.2rem; }
 }
 
 .hero-description {
