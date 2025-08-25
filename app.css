@@ -1487,6 +1487,11 @@ a {
     -webkit-backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 14px;
+    /* Ensure rounded corners remain visible across browsers & after build */
+    overflow: hidden; /* clips ::before glow and children to the radius */
+    background-clip: padding-box; /* crisper edges with blur */
+    /* Some engines lose antialiasing on radius with filters; clip-path is a robust fallback */
+    clip-path: inset(0 round 14px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
     position: relative;
 }
@@ -1505,6 +1510,14 @@ a {
 
 .contact-form.hover-glow::before {
     opacity: .35;
+}
+
+/* Fallback when backdrop-filter isn't available (keeps the glass feel) */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .contact-form {
+        background: rgba(255,255,255,.10); /* slightly stronger to compensate */
+        clip-path: inset(0 round 14px);
+    }
 }
 
 .form-group {
